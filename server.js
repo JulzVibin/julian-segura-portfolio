@@ -1,4 +1,6 @@
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 if (!ANTHROPIC_API_KEY) {
   console.error("\n  No ANTHROPIC_API_KEY set - chatbot will return a friendly placeholder.\n  Set it with: export ANTHROPIC_API_KEY=sk-ant-your-key-here\n");
@@ -30,4 +32,8 @@ app.post("/api/chat", rateLimit, async (req, res) => {
     res.json({content:data.content?.map(b=>b.text||"").join("")||""});
   } catch(e){console.error(e);res.status(500).json({error:"Server error."});}
 });
-app.listen(process.env.PORT||3001, ()=>console.log("API server running on http://localhost:"+(process.env.PORT||3001)));
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'dist', 'index.html')));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, ()=>console.log("Server running on http://localhost:"+PORT));
