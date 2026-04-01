@@ -141,7 +141,7 @@ export default function App() {
   ];
   const [projectTab, setProjectTab] = useState(0);
   const projectItems = [
-    { tab:"Sales Handoff Tool", title:"Sales-to-Onboarding Handoff Tool", desc:"Sales context was getting lost at handoff, forcing onboarding to start from scratch. I built a structured intake system that generates standardized briefs — so onboarding has the full picture before their first call.", loom:"https://www.loom.com/embed/0b73b7b5fb574165b85607afc8c7d6ad" },
+    { tab:"Sales Handoff Tool", title:"Sales-to-Onboarding Handoff Tool", desc:"Sales-to-implementation handoffs lose critical context everywhere. I built a voice-first AI intake system that interviews reps and generates structured briefs — giving implementation teams the full picture before their first call.", loom:"https://www.loom.com/embed/fa76ee30f1f745f68a55964d10ff1952" },
     { tab:"Data Migration Suite", title:"Data Migration Suite", desc:"Data migration was our biggest onboarding bottleneck. I built a platform that lets non-technical consultants migrate client data in minutes instead of hours—uploading raw exports, reviewing AI recommendations, exporting clean files. The result: faster go-lives, happier clients, better metrics. Showed that tooling can eliminate friction at scale." },
     { tab:"Spreadsheet Automation", title:"Spreadsheet Automation", desc:"New market segment, new problem: manual software configuration was taking 45 minutes per account and creating a cascade of delays. I built a tool that automated it to under 10 minutes with higher accuracy. Result: hardware shipped faster, installs moved quicker, go-lives improved, and onboarding could finally keep pace with GTM demand." },
   ];
