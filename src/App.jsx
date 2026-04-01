@@ -172,7 +172,7 @@ export default function App() {
         .nav-link:hover{color:var(--accent)}
         a{color:#111;text-decoration:none} input::placeholder{color:#bbb}
         ::-webkit-scrollbar{width:5px} ::-webkit-scrollbar-track{background:transparent} ::-webkit-scrollbar-thumb{background:#e0e0e0;border-radius:3px}
-        @media(max-width:768px){.desktop-nav{display:none!important}.mobile-toggle{display:flex!important}.nav-socials{display:none!important}.experience-tabs,.tol-tabs{flex-direction:column!important;background:none!important;border-radius:0!important;padding:0!important;gap:2px!important}.experience-tabs button,.tol-tabs button{width:100%!important;text-align:left!important;padding:12px 16px!important;border-radius:0 6px 6px 0!important;border-bottom:none!important;box-shadow:none!important}.experience-tabs button[data-active="true"],.tol-tabs button[data-active="true"]{border-left:3px solid var(--accent)!important;background:var(--accent-light)!important;color:var(--accent)!important}.experience-tabs button[data-active="false"],.tol-tabs button[data-active="false"]{border-left:3px solid transparent!important;color:#999!important;background:none!important}.project-tabs{flex-wrap:wrap!important}.project-tabs button{padding:8px 16px!important}}
+        @media(max-width:768px){.desktop-nav{display:none!important}.mobile-toggle{display:flex!important}.nav-socials{display:none!important}.experience-tabs,.tol-tabs{flex-direction:column!important;background:none!important;border-radius:0!important;padding:0!important;gap:2px!important}.experience-tabs button,.tol-tabs button{width:100%!important;text-align:left!important;padding:12px 16px!important;border-radius:0 6px 6px 0!important;border-bottom:none!important;box-shadow:none!important}.experience-tabs button[data-active="true"],.tol-tabs button[data-active="true"]{border-left:3px solid var(--accent)!important;background:var(--accent-light)!important;color:var(--accent)!important}.experience-tabs button[data-active="false"],.tol-tabs button[data-active="false"]{border-left:3px solid transparent!important;color:#999!important;background:none!important}.project-tabs{flex-direction:column!important;background:none!important;border-radius:0!important;padding:0!important;gap:2px!important}.project-tabs button{width:100%!important;text-align:left!important;padding:12px 16px!important;border-radius:0 6px 6px 0!important;box-shadow:none!important}.project-tabs button[data-active="true"]{border-left:3px solid var(--accent)!important;background:var(--accent-light)!important;color:var(--accent)!important}.project-tabs button[data-active="false"]{border-left:3px solid transparent!important;color:#999!important;background:none!important}}
         @media(min-width:769px){.mobile-toggle{display:none!important}.mobile-nav-menu{display:none!important}}
       `}</style>
 
@@ -235,7 +235,7 @@ export default function App() {
           <div style={{ display:"flex",justifyContent:"center" }}>
             <div className="project-tabs" style={{ display:"inline-flex",gap:8,background:"#f8f8f8",borderRadius:100,padding:4 }}>
               {projectItems.map((p,i) => (
-                <button key={i} onClick={()=>setProjectTab(i)} style={{ padding:"10px 24px",fontFamily:"var(--f-body)",fontSize:13,fontWeight:projectTab===i?600:400,color:projectTab===i?"#fff":"#999",background:projectTab===i?"var(--accent)":"transparent",border:"none",borderRadius:100,cursor:"pointer",transition:"all 0.2s",boxShadow:projectTab===i?"0 2px 8px rgba(5,150,105,0.2)":"none" }}
+                <button key={i} data-active={projectTab===i?"true":"false"} onClick={()=>setProjectTab(i)} style={{ padding:"10px 24px",fontFamily:"var(--f-body)",fontSize:13,fontWeight:projectTab===i?600:400,color:projectTab===i?"#fff":"#999",background:projectTab===i?"var(--accent)":"transparent",border:"none",borderRadius:100,cursor:"pointer",transition:"all 0.2s",boxShadow:projectTab===i?"0 2px 8px rgba(5,150,105,0.2)":"none" }}
                   onMouseEnter={e=>{if(projectTab!==i)e.currentTarget.style.background="#f0f0f0";}} onMouseLeave={e=>{if(projectTab!==i)e.currentTarget.style.background="transparent";}}>{p.tab}</button>
               ))}
             </div>
@@ -248,7 +248,7 @@ export default function App() {
                   {p.badge && <span style={{ background:"var(--accent-light)",color:"var(--accent)",padding:"3px 10px",borderRadius:100,fontSize:11,fontWeight:600,letterSpacing:"0.05em",textTransform:"uppercase",fontFamily:"var(--f-mono)" }}>{p.badge}</span>}
                 </div>
                 <p style={{ color:"#555",fontSize:14,lineHeight:1.7 }}>{p.desc}</p>
-                {p.loom && <iframe src={p.loom} style={{ width:"100%",aspectRatio:"16/9",maxHeight:260,border:"none",borderRadius:8,marginTop:20 }} allowFullScreen />}
+                {p.loom && <div style={{ background:"#f5f5f5",borderRadius:10,padding:4,margin:"16px 0",overflow:"hidden" }}><iframe src={p.loom} style={{ width:"100%",aspectRatio:"16/9",border:"none",borderRadius:8,display:"block" }} allowFullScreen /></div>}
               </div>
             </div>
           ))}
